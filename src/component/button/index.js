@@ -8,6 +8,7 @@ class ShareButton extends Component {
     
     render() {
         const submitEventPosts =()=>{
+         
             if(this.props.commitEvent)
                 this.props.commitEvent();
         }
@@ -15,7 +16,7 @@ class ShareButton extends Component {
             <div>
                 <button 
                 data-test="shareButtonComponent"
-                onClick={()=>{submitEventPosts}}
+                onClick={()=>submitEventPosts()}
                 >
                        {this.props.textButton}
                 </button>
