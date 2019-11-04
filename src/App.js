@@ -23,7 +23,7 @@ const  App=({posts,fetchPosts})=> {
   }
  console.log(posts);
   return (
-    <div className="App">
+    <div className="App" data-test="appComponent">
      
         <Header />
         <section className="main">
