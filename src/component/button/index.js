@@ -20,6 +20,7 @@ class ShareButton extends Component {
                 >
                        {this.props.textButton}
                 </button>
+                
             </div>
         )
     }
