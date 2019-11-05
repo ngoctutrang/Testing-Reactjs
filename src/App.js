@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Header from './component/header';
 import './App.scss';
 import Headline from './component/headline';
@@ -16,19 +16,29 @@ const temArr=[{
 }];
 
 const  App=({posts,fetchPosts})=> {
-
+  const [hideButton, setButtonState] = useState(false);
+  function fetch(){
+    fetchPosts();
+    exampleMethod_UpdateState();
+  }
   const configButton ={
     textButton: 'Get Posts',
-    commitEvent: fetchPosts
+    commitEvent: fetch
   }
  console.log(posts);
+  function exampleMethod_UpdateState(){
+    setButtonState(!hideButton);
+  }
   return (
     <div className="App" data-test="appComponent">
      
         <Header />
         <section className="main">
           <Headline header='Posts' desc="Click here to render posts" temArr={temArr}/>
-          <ShareButton {...configButton} />
+          {!hideButton && 
+              <ShareButton {...configButton} />
+          }
+        
           {posts.length >0 && 
             <div>
               {

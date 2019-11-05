@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import {shallow} from 'enzyme';
+import {shallow, mount} from 'enzyme';
 import {findByTestAttr, testStore} from './../Utils';
 
 const setUp =(initialState={})=>{
@@ -26,6 +26,24 @@ describe('App Component', ()=>{
    
      const attrTest = findByTestAttr(wrapper, 'appComponent');
      expect(attrTest.length).toBe(1);
+  });
+  it('exampleMethod_UpdateState should update state', ()=>{
+    /* ----------This is method for class--------
+    const classInstance = wrapper.instance();
+    classInstance.exampleMethod_UpdateState();
+    const newState =classInstance.state.hideButton;
+    expect(newState).toBe(true);
+    */
+   const initialState = {
+    posts:[{
+      title: 'Example title',
+      body: 'Some text'
+    }]
+  };
+   const store = testStore(initialState);
+   const container = mount(<App store ={store}/>);
+   container.find("button").simulate("click");
+   expect(container.find("button")).toHaveLength(0);
   })
 })
 
